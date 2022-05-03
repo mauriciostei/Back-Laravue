@@ -1,0 +1,18 @@
+GET http://localhost:8000/api/personas?orderBy=id&q=a&limit=5&page=1
+Accept: application/json
+Authorization: Bearer 1|vayW99JWbavP3LrNRJ3WKHCwB9XtxHtQDd9U0N9F
+
+###
+
+POST  http://localhost:8000/api/personas
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer 1|vayW99JWbavP3LrNRJ3WKHCwB9XtxHtQDd9U0N9F
+
+{
+    "nombres": "Ana"
+    , "apellidos": "Sanchez"
+    , "ci": "4444"
+    , "direccion": "Av Prueba ABC"
+    , "telefono": "8432048"
+}
