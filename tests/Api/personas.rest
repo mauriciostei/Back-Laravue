@@ -1,13 +1,13 @@
 GET http://localhost:8000/api/personas?orderBy=id&q=a&limit=5&page=1
 Accept: application/json
-Authorization: Bearer 1|vayW99JWbavP3LrNRJ3WKHCwB9XtxHtQDd9U0N9F
+Authorization: Bearer 2|GXYnHgRNsc2YY7V2eyRnoLIIH6GbgMgHnxw6logJ
 
 ###
 
 POST  http://localhost:8000/api/personas
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer 1|vayW99JWbavP3LrNRJ3WKHCwB9XtxHtQDd9U0N9F
+Authorization: Bearer 2|GXYnHgRNsc2YY7V2eyRnoLIIH6GbgMgHnxw6logJ
 
 {
     "nombres": "Ana"

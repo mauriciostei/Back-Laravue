@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personas', function (Blueprint $table) {
+        Schema::create('aulas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombres', 30);
-            $table->string('apellidos', 30);
-            $table->string('ci', 15)->nullable();
-            $table->string('direccion')->nullable();
-            $table->string('telefono', 15)->nullable();
-
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('nombre');
+            $table->string('ubicacion')->nullable();
+            $table->integer('capacidad')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
@@ -36,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personas');
+        Schema::dropIfExists('aulas');
     }
 };

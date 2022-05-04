@@ -1,8 +1,27 @@
-POST http://localhost:8000/api/auth/login
+### Login
+POST http://localhost:8000/api/v1/auth/login
 Accept: application/json
 Content-Type: application/json
 
 {
-    "email": ""
+    "email": "prueba@prueba.com"
     , "password": "12345"
 }
+
+### Registrar usuario
+POST http://localhost:8000/api/v1/auth/registro
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "prueba"
+    ,"email": "prueba@prueba.com"
+    ,"password": "12345"
+    ,"c_password": "12345"
+}
+
+### Cerrar sistema
+POST http://localhost:8000/api/v1/auth/logout
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer 2|GXYnHgRNsc2YY7V2eyRnoLIIH6GbgMgHnxw6logJ
