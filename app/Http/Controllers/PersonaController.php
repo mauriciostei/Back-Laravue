@@ -15,12 +15,13 @@ class PersonaController extends Controller
     public function index(Request $request){
 
         $limite = $request->limit ? $request->limit : 10;
+        $orden = $request->orderBy ? $request->orderBy : 'nombres';
         //$orden = ;
 
         $personas = Personas::orWhere('nombres', 'like', '%'.$request->q.'%')
             ->orWhere('apellidos', 'like', '%'.$request->q.'%')
             ->orWhere('ci', 'like', '%'.$request->q.'%')
-            ->orderBy($request->orderBy, 'desc')
+            ->orderBy($orden, 'desc')
             ->paginate($limite);
 
         return response()->json($personas, 200);
@@ -69,7 +70,8 @@ class PersonaController extends Controller
      */
     public function show($id)
     {
-        //
+        $persona = Personas::find($id);
+        return response()->json($persona, 200);
     }
 
     /**
@@ -81,7 +83,31 @@ class PersonaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validar
+        $request->validate([
+            'nombres' => 'required|string|max:30',
+            'apellidos' => 'required|string|max:30',
+            'ci' => 'max:15|unique:personas,ci,'.$id,
+
+        ]);
+
+        //Modificar
+        $persona = Personas::FindOrFail($id);
+        $persona->nombres = $request->nombres;
+        $persona->apellidos = $request->apellidos;
+        $persona->ci = $request->ci;
+        $persona->direccion = $request->direccion;
+        $persona->telefono = $request->telefono;
+        //$personas->user_id = $request->user;
+        $persona->save();
+
+
+        //Responder
+        return response()->json([
+            'mensaje' => 'Personas Guardada',
+            'error' => null,
+            'status' => true
+        ], 200);
     }
 
     /**
@@ -92,6 +118,14 @@ class PersonaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $persona = Personas::FindOrFail($id);
+        $persona->delete();
+
+        //Responder
+        return response()->json([
+            'mensaje' => 'Personas Eliminada',
+            'error' => null,
+            'status' => true
+        ], 200);
     }
 }

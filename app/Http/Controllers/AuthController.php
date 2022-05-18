@@ -27,7 +27,7 @@ class AuthController extends Controller
         $token = $tokenGenerado->plainTextToken;
 
         //Responder Token
-        return response()->json(['access_token' => $token, "token_type" => "Bearer", "error" => false], 200);
+        return response()->json(['access_token' => $token, "token_type" => "Bearer", "usuario" => $user], 200);
     }
 
     public function registro(Request $request){

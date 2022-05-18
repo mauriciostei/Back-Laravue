@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CarrerasController;
+use App\Http\Controllers\MateriasController;
 use App\Http\Controllers\PersonaController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -26,5 +28,7 @@ Route::group(["prefix" => "/v1/auth"], function(){
 Route::middleware('auth:sanctum')->group(function(){
 
     Route::apiResource('personas', PersonaController::class);
+    Route::apiResource('carreras', CarrerasController::class);
+    Route::apiResource('materias', MateriasController::class);
 
 });
